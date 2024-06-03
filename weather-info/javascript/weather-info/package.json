@@ -1,0 +1,19 @@
+{
+  "name": "weather-info",
+  "version": "1.0.0",
+  "description": "Example for importing weather data into WinCC OA",
+  "main": "index.js",
+  "author": "ETM professional control",
+  "license": "ISC",
+  "dependencies": {
+    "weather-js": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "3.3.0"
+  },
+  "scripts": {
+    "format": "prettier . --write",
+    "lint": "eslint ."
+  }
+}
