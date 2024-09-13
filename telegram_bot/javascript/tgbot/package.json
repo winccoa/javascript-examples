@@ -1,0 +1,14 @@
+{
+  "name": "TgBotWinccOA",
+  "version": "0.1.0",
+  "description": "Telegram bot for WinCC OA",
+  "main": "index.js",
+  "keywords": [
+    "WinCCOA"
+  ],
+  "author": "E. Saprykin",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.65.1"
+  }
+}

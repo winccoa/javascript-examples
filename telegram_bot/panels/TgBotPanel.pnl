@@ -1,0 +1,826 @@
+V 14
+1
+LANG:10001 0 
+PANEL,-1 -1 845 482 N "_3DFace" 0
+E E E E E 1 -1 -1 0  43 31.92561983471077
+""0  1
+E "const string dpName = \"myBot\";" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+22 0
+"gropsNames"
+""
+1 16.93749999999999 45 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14.93749999999999 30.31299774605561 184.9375 63.38737791134484
+0
+
+"main()
+{
+  dyn_mapping allGroups = getAllGroupsPVSS();
+  for(int i = 1; i <= allGroups.count(); i++)
+  {
+    this.appendItem(allGroups[i][\"Name\"]);
+  }
+}" 0
+
+E
+E
+ 1 0
+22 2
+"groupsIds"
+""
+1 228.9375 45 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  226.9375 30.31299774605561 396.9375 63.38737791134484
+0
+
+"main()
+{
+  dpConnect(\"setItems\", dpName + \".chatIds\");
+}
+
+setItems(string dp, dyn_string chatIds)
+{
+  this.deleteAllItems();
+  for(int i = 1; i<= chatIds.count(); i++)
+  {
+    if((long)chatIds[i] < 0)
+    {
+      this.appendItem(chatIds[i]);
+    }
+  }
+}" 0
+
+E
+E
+ 0 0
+22 3
+"userNames"
+""
+1 16 89 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14 74.31299774605561 184 107.3873779113448
+0
+
+"main()
+{
+  dyn_mapping allGroups = getAllUsersPVSS();
+  for(int i = 1; i <= allGroups.count(); i++)
+  {
+    this.appendItem(allGroups[i][\"Name\"]);
+  }
+}" 0
+
+E
+E
+ 1 0
+22 4
+"userssIds"
+""
+1 228 89 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  226 74.31299774605561 396 107.3873779113448
+0
+
+"main()
+{
+  dpConnect(\"setItems\", dpName + \".chatIds\");
+}
+
+setItems(string dp, dyn_string chatIds)
+{
+  this.deleteAllItems();
+  for(int i = 1; i<= chatIds.count(); i++)
+  {
+    if((long)chatIds[i] > 0)
+    {
+      this.appendItem(chatIds[i]);
+    }
+  }
+}" 0
+
+E
+E
+ 0 0
+13 5
+"AssignUsersGroups"
+""
+1 16.5 135 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+5 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14.5 125 183.5 157
+
+T 
+1
+LANG:10001 19 Assign users/groups
+"main(mapping event)
+{
+  dyn_string allAssignedUsers;
+  dpGet(dpName+\".assignedUsers\",allAssignedUsers);
+  string user = userNames.text;
+  string userChatId = userssIds.text;
+  string group = gropsNames.text;
+  string groupChatId = groupsIds.text;
+  if(user != \"\" && userChatId != \"\")
+  {
+    allAssignedUsers = assignUser(allAssignedUsers, user, userChatId);
+  }
+  if(group != \"\" && groupChatId != \"\")
+  {
+    allAssignedUsers = assignUser(allAssignedUsers, group, groupChatId);
+  }
+  dpSet(dpName+\".assignedUsers\",allAssignedUsers);
+}
+
+dyn_string assignUser(dyn_string assignedusers, string userName, string chatId)
+{
+  for (int i = 1; i <= assignedusers.count(); i++)
+  {
+    if(assignedusers[i].contains(userName))
+    {
+      assignedusers[i] = userName + \"#\"+chatId;
+      return assignedusers;
+    }
+  }
+  assignedusers.append(userName + \"#\"+chatId);
+  return assignedusers;
+}" 0
+ E E E
+22 6
+"user"
+""
+1 16.875 216.06885 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14.875 202.805 184.125 233
+0
+
+"main()
+{
+  dpConnect(\"setItems\", dpName + \".assignedUsers\");
+}
+
+setItems(string dp, dyn_string users)
+{
+  this.deleteAllItems();
+  string s;
+  for(int i = 1; i<= users.count(); i++)
+  {
+    string user = users[i].split(\"#\")[0];
+    this.appendItem(user);
+  }
+}" 0
+
+E
+E
+ 0 0
+30 7
+"FRAME1"
+""
+1 7 1 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+7 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1 0 1.035928143712575 0 -0.03592814371257495 0 E 7 1 412 169
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 19 Assign users/groups
+14 8
+"assignedDps"
+""
+1 16.88807565789473 258.2583333333333 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+3
+"acceptDrops" ""
+"DragDrop" "main(string information, int dragType)
+{
+  this.text = this.text + \";\";
+}"
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14.88807565789473 244.5 389.0130756578947 274
+3 "0s" 0 0 0 4 0 -1  E E E
+13 9
+"AssignDpes"
+""
+1 16.8946134868421 291.479375 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+9 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 Tahoma,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0  14.8946134868421 281.525 236.8946134868421 310
+
+T 
+1
+LANG:10001 18 Assign data points
+"main(mapping event)
+{
+  string currentUser = user.text;
+  string newVal = assignedDps.text;
+  if (newVal == \"\")
+  {
+    return;
+  }
+  string chatId = \"~\";
+  dyn_string allAssignedUsers;
+  dpGet(dpName + \".assignedUsers\",allAssignedUsers);
+
+  for(int i = 1; i<= allAssignedUsers.count(); i++)
+  {
+    if (allAssignedUsers[i].contains(currentUser))
+    {
+      chatId = allAssignedUsers[i].split(\"#\")[1];
+      break;
+    }
+  }
+  if (chatId==\"~\")
+  {
+    return;
+  }
+  dyn_string assignedDpes;
+  dpGet(dpName + \".connectedDp\",assignedDpes);
+  assignedDpes = assignUser(assignedDpes, chatId, newVal);
+  dpSet(dpName + \".connectedDp\",assignedDpes);
+}
+
+////TODO move this function and the same from button \"assig users/group\"
+dyn_string assignUser(dyn_string assignedusers, string userName, string chatId)
+{
+  for (int i = 1; i <= assignedusers.count(); i++)
+  {
+    if(assignedusers[i].contains(userName))
+    {
+      assignedusers[i] = userName + \"#\"+chatId;
+      return assignedusers;
+    }
+  }
+  assignedusers.append(userName + \"#\"+chatId);
+  return assignedusers;
+}" 0
+ E E E
+30 10
+"FRAME2"
+""
+1 7 1 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+10 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1 0 0.9041916167664668 0 173.0958083832336 0 E 7 1 412 169
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 11 Assign DPes
+22 11
+"COMBO_BOX1"
+""
+1 16.75 365.06885 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14.75 351.805 184 382
+0
+
+"main()
+{
+  dpConnect(\"setItems\", dpName + \".assignedUsers\");
+}
+
+setItems(string dp, dyn_string users)
+{
+  this.deleteAllItems();
+  string s;
+  for(int i = 1; i<= users.count(); i++)
+  {
+    string user = users[i].split(\"#\")[0];
+    this.appendItem(user);
+  }
+}" 0
+
+E
+E
+ 0 0
+14 12
+"alertQuery"
+""
+1 16.88807565789474 409.2583333333333 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  14.88807565789474 395.5 389.0130756578947 425
+3 "0s" 0 0 0 4 0 -1  E E E
+13 13
+"AssignAlarmQuery"
+""
+1 16.89461348684211 442.479375 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+13 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 Tahoma,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0  14.89461348684211 432.525 236.8946134868421 461
+
+T 
+1
+LANG:10001 12 Assign query
+"main(mapping event)
+{
+  string currentUser = user.text;
+  string newVal = alertQuery.text;
+  if (newVal == \"\")
+  {
+    return;
+  }
+  string chatId = \"~\";
+  dyn_string allAssignedUsers;
+  dpGet(dpName + \".assignedUsers\",allAssignedUsers);
+
+  for(int i = 1; i<= allAssignedUsers.count(); i++)
+  {
+    if (allAssignedUsers[i].contains(currentUser))
+    {
+      chatId = allAssignedUsers[i].split(\"#\")[1];
+      break;
+    }
+  }
+  if (chatId==\"~\")
+  {
+    return;
+  }
+  dyn_string assignedDpes;
+  dpGet(dpName + \".query\",assignedDpes);
+  assignedDpes = assignUser(assignedDpes, chatId, newVal);
+  dpSet(dpName + \".query\",assignedDpes);
+}
+
+////TODO move this function and the same from button \"assig users/group\"
+dyn_string assignUser(dyn_string assignedusers, string userName, string chatId)
+{
+  for (int i = 1; i <= assignedusers.count(); i++)
+  {
+    if(assignedusers[i].contains(userName))
+    {
+      assignedusers[i] = userName + \"#\"+chatId;
+      return assignedusers;
+    }
+  }
+  assignedusers.append(userName + \"#\"+chatId);
+  return assignedusers;
+}" 0
+ E E E
+30 14
+"FRAME3"
+""
+1 7 1 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+14 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1 0 0.9041916167664668 1.06581410364015e-14 324.0958083832336 0 E 7 1 412 169
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 25 Assign Query Subscription
+22 15
+"COMBO_BOX2"
+""
+1 440.75 38.30635000000001 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  438.75 25.04250000000002 608 55.23750000000001
+0
+
+"main()
+{
+  dpConnect(\"setItems\", dpName + \".assignedUsers\");
+}
+
+setItems(string dp, dyn_string users)
+{
+  this.deleteAllItems();
+  string s;
+  for(int i = 1; i<= users.count(); i++)
+  {
+    string user = users[i].split(\"#\")[0];
+    this.appendItem(user);
+  }
+}" 0
+
+E
+E
+ 0 0
+13 17
+"SendMessage"
+""
+1 441 442.479375 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+8
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 Tahoma,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0  439 432.525 661 461
+
+T 
+1
+LANG:10001 20 Send message to user
+"main(mapping event)
+{
+  string currentUser = user.text;
+  string newVal = assignedDps.text;
+  string chatId = \"~\";
+  dyn_string allAssignedUsers;
+  dpGet(dpName + \".assignedUsers\",allAssignedUsers);
+  for(int i = 1; i<= allAssignedUsers.count(); i++)
+  {
+    if (allAssignedUsers[i].contains(currentUser))
+    {
+      chatId = allAssignedUsers[i].split(\"#\")[1];
+      break;
+    }
+  }
+  if (chatId==\"~\")
+  {
+    return;
+  }
+  string msg = chatId + \"#\" + message.text;
+  dpSet(dpName + \".message\",msg);
+}" 0
+ E E E
+30 18
+"FRAME4"
+""
+1 7 1 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+18 0 0 0 0 0
+E E E
+1
+1
+LANG:10001 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1 0 2.832335329341317 424 -1.832335329341275 0 E 7 1 412 169
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 12 Send message
+29 19
+"message"
+""
+1 441 64 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  441 64 817 421
+15 PVSS.TextEdit.1
+0
+E2 20
+"PRIMITIVE_TEXT1"
+""
+1 229 18 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 229 18 393 35
+0 2 2 "0s" 0 0 0 64 0 0  229 18 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 7 Chat Id
+2 21
+"PRIMITIVE_TEXT2"
+""
+1 228 63 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 228 63 392 80
+0 2 2 "0s" 0 0 0 64 0 0  228 63 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 7 Chat Id
+2 22
+"PRIMITIVE_TEXT3"
+""
+1 16.99999999999991 18 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 16.99999999999991 18 181 35
+0 2 2 "0s" 0 0 0 64 0 0  16.99999999999991 18 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 10 Group name
+2 23
+"PRIMITIVE_TEXT4"
+""
+1 18.99999999999991 63 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 18.99999999999991 63 183 80
+0 2 2 "0s" 0 0 0 64 0 0  18.99999999999991 63 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 9 User name
+2 24
+"PRIMITIVE_TEXT5"
+""
+1 18.87499999999991 188.805 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 18.87499999999991 188.805 182.875 205.805
+0 2 2 "0s" 0 0 0 64 0 0  18.87499999999991 188.805 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 9 User name
+2 25
+"PRIMITIVE_TEXT6"
+""
+1 18.62499999999991 338.87385 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 18.62499999999991 338.87385 182.625 355.87385
+0 2 2 "0s" 0 0 0 64 0 0  18.62499999999991 338.87385 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 9 User name
+2 26
+"PRIMITIVE_TEXT7"
+""
+1 18.87499999999991 232.805 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 18.87499999999991 232.805 182.875 249.805
+0 2 2 "0s" 0 0 0 64 0 0  18.87499999999991 232.805 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 4 DPEs
+2 27
+"PRIMITIVE_TEXT8"
+""
+1 18.76307565789465 385.0633333333333 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10001 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 18.76307565789465 385.0633333333333 182.7630756578947 402.0633333333333
+0 2 2 "0s" 0 0 0 64 0 0  18.76307565789465 385.0633333333333 1
+1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0 1
+LANG:10001 5 Query
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0
