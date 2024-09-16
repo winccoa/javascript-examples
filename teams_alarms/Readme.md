@@ -1,5 +1,5 @@
 # WinCC OA Alarm messages to Team
-For the setup of the WinCC OA messenger, you will need three prerequisits:
+For the setup of the WinCC OA messenger, you will need following prerequisites:
 * setup your MS Teams Team and add a incoming WebHook
 * WinCC OA V3.20
 * nodejs V18++
