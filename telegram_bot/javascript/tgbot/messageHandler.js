@@ -1,5 +1,5 @@
 const { WinccoaElementType } = require('winccoa-manager');
-const messageHadlers = new Map([
+const messageHandlers = new Map([
     ["/set", setValue],
     ["/ack", ackAlert],
 ]);
