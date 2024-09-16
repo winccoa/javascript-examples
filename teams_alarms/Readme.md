@@ -56,4 +56,4 @@ Execute "npm install" in your project directory to get all required packages
 
 ## Additional
 * Now you can start to modify your application.
-* At first you might change the select statement in the dpQueryConnectSingle call to change the set of alarms you want to receive and/or the information you want to receive.
+* At first you might change the select statement in the dpQueryConnectSingle call to change the set of alarms and/or the information you want to receive.
