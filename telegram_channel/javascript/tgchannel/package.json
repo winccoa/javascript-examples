@@ -1,0 +1,14 @@
+{
+  "name": "TgChannelWinccOA",
+  "version": "0.1.0",
+  "description": "Telegram channel for WinCC OA",
+  "main": "index.js",
+  "keywords": [
+    "WinCCOA"
+  ],
+  "author": "ETM",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.65.1"
+  }
+}
