@@ -5,7 +5,7 @@ For the setup of the WinCC OA messenger, you will need following prerequisites:
 * WinCC OA V3.20
 * nodejs V18++
 ## Add an incoming webHook to your Team
-* Select "..." at your Team
+* Click "..." at your Team
 
 ![Team configure](ReadMe/TeamsKanaele1.png)
 * Select "Team verwalten"
