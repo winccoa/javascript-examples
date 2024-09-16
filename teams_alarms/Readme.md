@@ -11,7 +11,7 @@ For the setup of the WinCC OA messenger, you will need following prerequisites:
 * Click "Manage Team"
 
 ![Team manage](ReadMe/TeamsKanaele2.png)
-* Select "Add App"
+* Click "Add App"
 
 ![Add App](ReadMe/TeamsKanaele3.png)
 * Add "Incoming WebHook" App
