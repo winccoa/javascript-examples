@@ -7,7 +7,7 @@
 
 ## Installation
 
-1. Copy this directory to the drive where your WinCC OA projects are residing.
+1. Clone or copy this repository locally.
 
 2. Integrate this directory as a sub-project of a WinCC OA project.
 
