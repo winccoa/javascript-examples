@@ -50,7 +50,7 @@ Execute "npm install" in your project directory to get all required packages
 
 ## Finaly
 * Start your project and you should see that the JavaScript manager is correctly started and running.
-And you should receive a new message in your MS Teams Team.
+* You should receive a new message in your MS Teams _Team_.
 
 ![Console](ReadMe/TeamsResult.png)
 
