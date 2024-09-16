@@ -1,7 +1,7 @@
 # Telegram bot for WinCC OA
 
 ## Features
- - sending messages to users
+ - send messages to users
  - subscribe users to dp changes
  - subscribe users to dpQuery
 
