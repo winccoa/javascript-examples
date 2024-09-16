@@ -4,13 +4,13 @@ const messageHandlers = new Map([
     ["/ack", ackAlert],
 ]);
 
-function setValue(winccoa, msg, myBot, chatId) {
+function setValue(winccoa, msg, myChannel, chatId) {
     if (msg.length < 3) {
-        myBot.sendMessage(chatId, "Please specify a value.");
+        myChannel.sendMessage(chatId, "Please specify a value.");
         return;
     }
     if (!winccoa.dpExists(msg[1] + ":_original")) { 
-        myBot.sendMessage(chatId, `Dpe ${msg[1]} does not exist.`);
+        myChannel.sendMessage(chatId, `Dpe ${msg[1]} does not exist.`);
         return;
     }
     console.log(msg[1], msg[2]);
@@ -24,21 +24,21 @@ function setValue(winccoa, msg, myBot, chatId) {
     }
 }
 
-function ackAlert(winccoa, msg, myBot) {
+function ackAlert(winccoa, msg, myChannel) {
     winccoa.dpSet(msg[1] + ":_alert_hdl.._ack", 2);
 }
 
-function processMessage(msg, allowedChats, presentedChats, winccoa, myBot) {
+function processMessage(msg, allowedChats, presentedChats, winccoa, myChannel) {
     let chatId = msg.chat.id.toString()
     if (allowedChats.includes(chatId)) {
         let textArray = msg.text.split(' ');
         const funcName = textArray[0].toLowerCase();
         if (messageHandlers.has(funcName)) {
-            messageHandlers.get(funcName)(winccoa, textArray, myBot, chatId);
+            messageHandlers.get(funcName)(winccoa, textArray, myChannel, chatId);
             return;
         }
 
-        myBot.sendMessage(chatId, "Sorry, I don't understand you.");
+        myChannel.sendMessage(chatId, "Sorry, I don't understand you.");
         console.error("Something went wrong: " + funcName + " is not a valid command.");
     }
 

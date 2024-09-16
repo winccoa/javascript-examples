@@ -1,8 +1,8 @@
 'use strict';
 const { WinccoaManager } = require('winccoa-manager');
-const { runTelegramBot } = require('./TelegramBot');
+const { runTelegramChannel } = require('./TelegramChannel');
 
 const winccoa = new WinccoaManager();
 
-runTelegramBot(winccoa);
+runTelegramChannel(winccoa);
 

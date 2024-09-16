@@ -4,7 +4,7 @@ LANG:10001 0
 PANEL,-1 -1 845 482 N "_3DFace" 0
 E E E E E 1 -1 -1 0  43 31.92561983471077
 ""0  1
-E "const string dpName = \"myBot\";" 0
+E "const string dpName = \"myChannel\";" 0
  4
 "CBRef" "1"
 "EClose" E

@@ -2,7 +2,7 @@
 
 # DpType
 TypeName
-TelegramBot.TelegramBot	1#1
+TelegramChannel.TelegramChannel	1#1
 	message	25#2
 	chatIds	9#3
 	apiKey	25#4
@@ -13,25 +13,25 @@ TelegramBot.TelegramBot	1#1
 
 # Datapoint/DpId
 DpName	TypeName	ID
-myBot	TelegramBot	495
+myChannel	TelegramChannel	495
 
 # DpValue
 Manager/User	ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
-UI (1)/0	myBot.message	TelegramBot	""	0x8300000000100101	21.05.2024 11:02:23.552
-UI (1)/0	myBot.chatIds	TelegramBot		0x8300000000000101	21.05.2024 11:03:15.448
-UI (1)/0	myBot.apiKey	TelegramBot	""	0x8300000000100101	21.05.2024 11:02:30.400
-UI (1)/0	myBot.allowedChats	TelegramBot		0x8300000000000101	21.05.2024 11:03:01.536
-UI (1)/0	myBot.assignedUsers	TelegramBot		0x8300000000000101	21.05.2024 11:02:32.768
-UI (1)/0	myBot.connectedDp	TelegramBot		0x8300000000000101	21.05.2024 08:17:39.832
-UI (1)/0	myBot.query	TelegramBot		0x8300000000000101	21.05.2024 11:02:55.872
+UI (1)/0	myChannel.message	TelegramChannel	""	0x8300000000100101	21.05.2024 11:02:23.552
+UI (1)/0	myChannel.chatIds	TelegramChannel		0x8300000000000101	21.05.2024 11:03:15.448
+UI (1)/0	myChannel.apiKey	TelegramChannel	""	0x8300000000100101	21.05.2024 11:02:30.400
+UI (1)/0	myChannel.allowedChats	TelegramChannel		0x8300000000000101	21.05.2024 11:03:01.536
+UI (1)/0	myChannel.assignedUsers	TelegramChannel		0x8300000000000101	21.05.2024 11:02:32.768
+UI (1)/0	myChannel.connectedDp	TelegramChannel		0x8300000000000101	21.05.2024 08:17:39.832
+UI (1)/0	myChannel.query	TelegramChannel		0x8300000000000101	21.05.2024 11:02:55.872
 # ascii dump of database
 
 # Datapoint/DpId
 DpName	TypeName	ID
-_ds_TelegramBot	_DynamicDptSettings	2524
+_ds_TelegramChannel	_DynamicDptSettings	2524
 
 # DpValue
 Manager/User	ElementName	TypeName	_original.._value	_original.._status64	_original.._stime
-UI (1)/0	_ds_TelegramBot.symbols	_DynamicDptSettings		0x8300000000000101	17.05.2024 10:35:21.896
-UI (1)/0	_ds_TelegramBot.symboldefault	_DynamicDptSettings	""	0x8300000000000101	17.05.2024 10:35:38.856
-UI (1)/0	_ds_TelegramBot.trendElements	_DynamicDptSettings		0x8300000000000101	17.05.2024 10:35:38.856
+UI (1)/0	_ds_TelegramChannel.symbols	_DynamicDptSettings		0x8300000000000101	17.05.2024 10:35:21.896
+UI (1)/0	_ds_TelegramChannel.symboldefault	_DynamicDptSettings	""	0x8300000000000101	17.05.2024 10:35:38.856
+UI (1)/0	_ds_TelegramChannel.trendElements	_DynamicDptSettings		0x8300000000000101	17.05.2024 10:35:38.856

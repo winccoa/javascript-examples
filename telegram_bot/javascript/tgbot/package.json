@@ -1,12 +1,12 @@
 {
-  "name": "TgBotWinccOA",
+  "name": "TgChannelWinccOA",
   "version": "0.1.0",
-  "description": "Telegram bot for WinCC OA",
+  "description": "Telegram channel for WinCC OA",
   "main": "index.js",
   "keywords": [
     "WinCCOA"
   ],
-  "author": "E. Saprykin",
+  "author": "ETM",
   "license": "ISC",
   "dependencies": {
     "node-telegram-bot-api": "^0.65.1"

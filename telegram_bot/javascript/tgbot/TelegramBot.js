@@ -1,8 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api');
 const { processMessage } = require('./messageHandler');
-const dpName = "myBot"
+const dpName = "myChannel"
 
-function TBot(apiKey) {
+function TChannel(apiKey) {
     this.bot = new TelegramBot(apiKey, { polling: true });
 
     this.sendMessage = function (chatId, text) {
@@ -14,14 +14,14 @@ function TBot(apiKey) {
     }
 }
 
-let myBot = null;
+let myChannel = null;
 
-const runTelegramBot = async (winccoa) => {
+const runTelegramChannel = async (winccoa) => {
     const [apiKey] = await winccoa.dpGet([`${dpName}.apiKey`]);
     let presentedChats = (await winccoa.dpGet([`${dpName}.chatIds`]))[0];
     let allowedChats = (await winccoa.dpGet([`${dpName}.allowedChats`]))[0];
 
-    myBot = new TBot(apiKey);
+    myChannel = new TChannel(apiKey);
 
     try {
         winccoa.dpConnect((n, v, t, e) => allowedChats = v[0], [`${dpName}.allowedChats`], true);
@@ -34,7 +34,7 @@ const runTelegramBot = async (winccoa) => {
     subscribeUsers((await winccoa.dpGet([`${dpName}.connectedDp`]))[0], winccoa, false)
     subscribeUsers((await winccoa.dpGet([`${dpName}.query`]))[0], winccoa, true)
 
-    myBot.on('message', (msg) => processMessage(msg, allowedChats, presentedChats, winccoa, myBot));
+    myChannel.on('message', (msg) => processMessage(msg, allowedChats, presentedChats, winccoa, myChannel));
 }
 
 function subscribeUsers(
@@ -57,7 +57,7 @@ function subscribeUsers(
             winccoa.dpQueryConnectSingle((values, type, error) => sendAllertMessage(key, values, type, error), false, val[0]);
         }
         else {
-            winccoa.dpConnect((names, values, type, error) => myBot.sendMessage(key, `${names[0]} : ${values[0]}`), val, false);
+            winccoa.dpConnect((names, values, type, error) => myChannel.sendMessage(key, `${names[0]} : ${values[0]}`), val, false);
         }
     })
 }
@@ -75,7 +75,7 @@ function sendAllertMessage(
     if (values.length <= 1) return;
 
     for (let i = 1; i < values.length; i++) {
-        myBot.sendMessage(data, `Alerts: ${values[i][0]} : ${values[i][2]}`);
+        myChannel.sendMessage(data, `Alerts: ${values[i][0]} : ${values[i][2]}`);
     }
 }
 
@@ -87,11 +87,11 @@ function connectCB(
 ) {
     try {
         let msg = values[0].split('#');
-        myBot.sendMessage(msg[0], msg[1]);
+        myChannel.sendMessage(msg[0], msg[1]);
     }
     catch (exc) {
         console.error(exc);
     }
 }
 
-module.exports.runTelegramBot = runTelegramBot;
+module.exports.runTelegramChannel = runTelegramChannel;

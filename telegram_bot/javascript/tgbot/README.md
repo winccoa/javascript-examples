@@ -1,4 +1,4 @@
-# Telegram bot for WinCC OA
+# Telegram channel for WinCC OA
 
 ## Features
  - send messages to users
@@ -11,9 +11,9 @@
 
 2. Integrate this directory as a sub-project of a WinCC OA project.
 
-3. Use the ASCII manager to import dplist/tgbot.dpl.
+3. Use the ASCII manager to import dplist/tgchannel.dpl.
 
-4. Open a command prompt in the directory javascript/tgbot
+4. Open a command prompt in the directory javascript/tgchannel
 
 5. Call the following command to install required modules
 
@@ -21,17 +21,17 @@
    > npm install
    ```
 
-6. Add a __JavaScript Manager__ with `tgbot/index.js` as its only parameter. Set Start mode to __manual__.
+6. Add a __JavaScript Manager__ with `tgchannel/index.js` as its only parameter. Set Start mode to __manual__.
 
 7. Create new telegram bot https://core.telegram.org/bots which will result in an API Key to be used.
 
-8. Put you API key from step 7 to dpe "myBot.apiKey" via WinCC OA Para module
+8. Put you API key from step 7 to dpe "myChannel.apiKey" via WinCC OA Para module
 
 9. Start the manager added in step 6.
 
-10. Open the panel TgBotPanel.pnl using the WinCC OA User Interface 
+10. Open the panel TgChannelPanel.pnl using the WinCC OA User Interface 
 
-### TgBotPanel.pnl
+### TgChannelPanel.pnl
 
  - To assign user name (group name) to chat id, choose chat id and user/group name (or type it). Press button "Assign users/groups"
 
@@ -50,12 +50,12 @@ Press button "Assign query"
 
 ### Handling messages from user
 
-Dpe "myBot.allowedChats" contains users'/groups' chat ids for users/groups which messages are handled.
+Dpe "myChannel.allowedChats" contains users'/groups' chat ids for users/groups which messages are handled.
 Currently only two commands are implemented: "/set" and "/ack" 
 
 For using this functionality:
 
- - Find chat id in dpe "myBot.chatIds".
- - add the chat id to dpe "myBot.allowedChats".
+ - Find chat id in dpe "myChannel.chatIds".
+ - add the chat id to dpe "myChannel.allowedChats".
  - To set a DPE value, send a message like "/set DPE-name newValue" (*Mind:" for boolean variables only values 0 and false (case insensitive) mean false).
  - To acknowledge an alarm, send a message like "/ack DPE-name"
