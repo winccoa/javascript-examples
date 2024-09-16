@@ -2,7 +2,7 @@
 
 ## Features
  - send messages to users
- - subscribe users to dp changes
+ - subscribe to Datapoint changes
  - subscribe users to dpQuery
 
 ## Installation
