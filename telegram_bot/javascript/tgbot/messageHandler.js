@@ -34,7 +34,7 @@ function processMessage(msg, allowedChats, presentedChats, winccoa, myBot) {
         let textArray = msg.text.split(' ');
         const funcName = textArray[0].toLowerCase();
         if (messageHadlers.has(funcName)) {
-            messageHadlers.get(funcName)(winccoa, textArray, myBot, chatId);
+            messageHandlers.get(funcName)(winccoa, textArray, myBot, chatId);
             return;
         }
 
