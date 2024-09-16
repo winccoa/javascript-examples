@@ -49,7 +49,7 @@ Execute "npm install" in your project directory to get all required packages
 ![Console](ReadMe/Console2.png)
 
 ## Finaly
-* Start your project and you should see, that the node manager is correctly starting and running.
+* Start your project and you should see that the JavaScript manager is correctly started and running.
 And you should receive a new message in your MS Teams Team.
 
 ![Console](ReadMe/TeamsResult.png)
