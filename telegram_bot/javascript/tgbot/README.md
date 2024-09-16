@@ -57,5 +57,5 @@ For using this functionality:
 
  - Find chat id in dpe "myBot.chatIds".
  - add the chat id to dpe "myBot.allowedChats".
- - to set partcular dpe send message like "/set dpename newValue" (*for boolean variables only values 0 and false (case insensitive) mean false*).
+ - To set a DPE value, send a message like "/set DPE-name newValue" (*Mind:" for boolean variables only values 0 and false (case insensitive) mean false).
  - to ack alarm send message like "/ack dpename"
