@@ -1,4 +1,4 @@
-# Telegram bot for wincc OA
+# Telegram bot for WinCC OA
 
 ## Features
  - sending messages to users
