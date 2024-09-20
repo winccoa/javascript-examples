@@ -7,30 +7,30 @@ For the setup of the WinCC OA messenger, you will need following prerequisites:
 ## Add an incoming webHook to your Team
 * Click "..." at your Team
 
-![Team configure](ReadMe/TeamsKanaele1.png)
+![Team configure](ReadMe/TeamsChannels1.png)
 * Click "Manage Team"
 
-![Team manage](ReadMe/TeamsKanaele2.png)
+![Team manage](ReadMe/TeamsChannels2.png)
 * Click "Add App"
 
-![Add App](ReadMe/TeamsKanaele3.png)
+![Add App](ReadMe/TeamsChannels3.png)
 * Add "Incoming WebHook" App
 
-![Choos Incoming WebHook](ReadMe/TeamsKanaele4.png)
+![Choos Incoming WebHook](ReadMe/TeamsChannels4.png)
 * Choose "Add to a Team"
 
-![Add To Team](ReadMe/TeamsKanaele5.png)
+![Add To Team](ReadMe/TeamsChannels5.png)
 * Select "Connection einrichten"
 
-![Manage Connection](ReadMe/TeamsKanaele6.png)
+![Manage Connection](ReadMe/TeamsChannels6.png)
 * Choose a name which will be used to identify all messages communicated via this hook and select "Einrichten"
 
-![Einrichten](ReadMe/TeamsKanaele7.png)
+![Einrichten](ReadMe/TeamsChannels7.png)
 * Teams will generate a unique URL for your WebHook.
 * Copy the Link and add it in the source file for your url variable.
 * Then finish the configuration
 
-![Finish](ReadMe/TeamsKanaele8.png)
+![Finish](ReadMe/TeamsChannels8.png)
 ## Setup your NodeJS Project
 * Copy this project in a directory of your choice - ideally in your WinCC OA Project/javascript directory.
 Add the created WebHook URL in the code of index.js (url=...)
