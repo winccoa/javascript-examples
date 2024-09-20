@@ -1,0 +1,14 @@
+{
+  "name": "mytest",
+  "version": "1.0.0",
+  "description": "Example for a WinCC OA Alarms plugin for MS Teams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ETM",
+  "license": "ISC",
+  "dependencies": {
+    "ms-teams-webhook": "^2.0.3"
+  }
+}
